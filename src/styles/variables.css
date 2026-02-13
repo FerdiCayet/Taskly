@@ -1,0 +1,20 @@
+:root {
+    /* ===== Primary Colors ===== */
+    --rich-black: #001f1b;
+    --dark-green: #00332e;
+    --bangladesh-green: #006a5c;
+    --mountain-meadow: #22c995;
+    --caribbean-green: #00f1a8;
+    --anti-flash-white: #f7f9f8;
+
+    /* ===== Secondary Colors ===== */
+    --pine: #063d38;
+    --basil: #0b4f46;
+    --forest: #095b4e;
+    --frog: #17b093;
+    --mint: #2fe0c4;
+
+    /* ===== Neutral ===== */
+    --stone: #b7c7c4;
+    --pistachio: #d8e6e2;
+}

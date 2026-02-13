@@ -1,0 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=SN+Pro:ital,wght@0,200..900;1,200..900&display=swap');
+@import 'tailwindcss';
+
+@source "../../index.html";
+@source "../../src/**/*.{ts,tsx,html}";
+
+@theme {
+    --font-sn-pro: "SN Pro", sans-serif;
+    --font-sans: Inter, system-ui, sans-serif;
+}
