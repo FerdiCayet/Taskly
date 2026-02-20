@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=SN+Pro:ital,wght@0,200..900;1,200..900&display=swap');
+
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+::selection {
+    background-color: #00f1a9a3;
+    color: #00332e;
+}
+html,
+body {
+    scroll-behavior: smooth;
+    scrollbar-width: thin;
+    scrollbar-color: #063d38 #025e49;
+}
+body {
+    background-color: #011818;
+    font-family: "SN Pro", "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    width: 100%;
+    height: 100dvh;
+    transition: all 0.2s ease;
+}
+
+#no-js {
+    display: flex;
+    flex-direction: column;
+    justify-content : center;
+    align-items: baseline;
+}
+.js {
+    display: block;
+    margin: 30px auto;
+    position: relative;
+    width: 100px;
+    height: 100px;
+    border: 3px solid #006a5c;
+    border-radius: 10px;
+    transition: all 0.5s ease;
+}
+.js::after {
+    content: 'JS';
+    font-size: 3.5rem;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+    position: absolute;
+    color: #006a5c;
+    bottom: -5px;
+    right: 0px;
+    width: 70px;
+    height: 70px;
+}
+.container-js {
+    display: block;
+    margin: 0 auto;
+    width: 900px;
+    max-width: 100%;
+    background-color: #063d38;
+    border: 2px solid #00332e;
+    border-radius: 10px;
+}
+.content-js {
+    margin: 10px;
+    padding: 10px;
+}
+.content-js h2 {
+    color: #d8e6e2;
+    text-align: center;
+    padding: 20px;
+}
+.content-js p {
+    line-height: 1.3;
+    padding-bottom: 10px;
+    color: #006a5c;
+    color: #0d9f83;
+}
+.content-js ul { padding: 10px 25px; list-style-type: decimal; }
+.content-js ul > li { color: #006a5c; }
+.content-js ul > li::marker { color: #00937e; }
+.content-js li > b {
+    padding: 0 2px;
+    color: #17b093;
+}
+.content-js strong { color: #002420; }
+.content-js a {
+    color: #00917e;
+    text-decoration: underline;
+    text-underline-offset: 0.5px;
+    transition: all 0.2s ease;
+}
+.content-js a:hover {
+    text-underline-offset: 3px;
+    text-decoration-color: #063d38;
+}
