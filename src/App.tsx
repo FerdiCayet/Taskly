@@ -1,4 +1,5 @@
 import CreateToDo from './components/CreateToDo';
+import FilterTasks from './components/FilterTasks';
 import SearchTasks from './components/SearchTasks';
 
 export default function App() {
@@ -8,6 +9,8 @@ export default function App() {
             <CreateToDo />
             <hr className="h-px border-0 bg-(--dark-green)"></hr>
             <SearchTasks />
+            <hr className="h-px border-0 bg-(--dark-green)"></hr>
+            <FilterTasks />
         </div>
     );
 }
