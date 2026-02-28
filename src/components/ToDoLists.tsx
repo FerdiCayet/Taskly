@@ -1,6 +1,7 @@
 import { useState } from 'react';
+import type { ToDoListProps } from '../types/task';
 
-export function ToDoLists() {
+export function ToDoLists({ taskList }: ToDoListProps) {
     const [btnCompleted, selectedCompleted] = useState<boolean>(false);
 
     return (
