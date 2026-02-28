@@ -1,8 +1,6 @@
-import { useState } from 'react';
+type SearchTasksProps = { search: string; onSearch: (value: string) => void };
 
-export default function SearchTasks() {
-    const [search, setSearch] = useState<string>('');
-
+export default function SearchTasks({ search, onSearch }: SearchTasksProps) {
     return (
         <div className="flex flex-col gap-2.5 relative m-5">
             <h1 className="text-(--bangladesh-green) font-bold text-2xl cursor-default">Pesquisar:</h1>
@@ -11,7 +9,7 @@ export default function SearchTasks() {
                 type="text"
                 id="task"
                 name="task"
-                onChange={(e) => setSearch(e.target.value)}
+                onChange={(e) => onSearch(e.target.value)}
                 value={search}
                 placeholder="Digite para pesquisar..."
             />

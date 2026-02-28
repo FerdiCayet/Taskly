@@ -6,6 +6,8 @@ import { ToDoLists } from './components/ToDoLists';
 import type { Task } from './types/task';
 
 export default function App() {
+    const [search, setSearch] = useState<string>('');
+
     const [tasks, setTasks] = useState<Task[]>([
         { id: 1, title: 'Estudar Python', category: 'job', completed: false },
         { id: 2, title: 'Construir no sistema', category: 'study', completed: false }
@@ -20,7 +22,7 @@ export default function App() {
             <h1 className="text-3xl font-bold text-center subpixel-antialiased font-stretch-extra-expanded cursor-default">Lista de Tarefas</h1>
             <CreateToDo onCreate={handleCreateTask} />
             <hr className="h-px border-0 bg-(--dark-green)"></hr>
-            <SearchTasks />
+            <SearchTasks search={search} onSearch={setSearch} />
             <hr className="h-px border-0 bg-(--dark-green)"></hr>
             <FilterTasks />
             <hr className="h-px border-0 bg-(--dark-green)"></hr>
