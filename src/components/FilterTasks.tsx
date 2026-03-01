@@ -1,15 +1,13 @@
-import { useState } from 'react';
+type FilterTasksProps = { filter: string; onFilterChange: (value: string) => void };
 
-export default function FilterTasks() {
-    const [filter, setFilter] = useState<string>();
-
+export default function FilterTasks({ filter, onFilterChange }: FilterTasksProps) {
     return (
         <div className="flex flex-col gap-2.5 relative m-5">
             <h1 className="text-(--bangladesh-green) font-bold text-2xl cursor-default">Filtrar:</h1>
             <select
                 className="p-2 bg-(--forest) placeholder:text-[bg-amber-500] text-(--frog) rounded-md focus:outline-2 outline-offset-2 outline-(--bangladesh-green) transition-all duration-200 ease"
                 value={filter}
-                onChange={(e) => setFilter(e.target.value)}
+                onChange={(e) => onFilterChange(e.target.value)}
             >
                 <option id="category" value="all">
                     Todas
