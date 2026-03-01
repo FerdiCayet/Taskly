@@ -9,5 +9,4 @@ export type Task = {
 
 export type ToDoListProps = {
     taskList: Task[];
-    onCreate: (task: Task) => void;
 };
