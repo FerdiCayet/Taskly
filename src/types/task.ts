@@ -9,4 +9,6 @@ export type Task = {
 
 export type ToDoListProps = {
     taskList: Task[];
+    onDelete: (id: number) => void;
+    onComplete: (id: number) => void;
 };
