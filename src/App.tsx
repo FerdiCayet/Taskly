@@ -9,18 +9,31 @@ export default function App() {
     const [search, setSearch] = useState<string>('');
     const [filter, setFilter] = useState<string>('all');
 
-    const [tasks, setTasks] = useState<Task[]>([
-        { id: 1, title: 'Estudar Python', category: 'job', completed: false },
-        { id: 2, title: 'Construir no sistema', category: 'study', completed: false }
-    ]);
+    const [tasks, setTasks] = useState<Task[]>([]);
 
     const handleCreateTask = (newTask: Task) => {
         setTasks((prevTasks) => [newTask, ...prevTasks]);
     };
 
-    const filteredTasks = tasks.filter((task) =>
-        task.title.toLowerCase().includes(search.toLowerCase())
-    );
+    const filteredTasks = tasks
+        .filter((task) => task.title.toLowerCase().includes(search.toLowerCase()))
+        .filter((task) => {
+            if (filter === 'all') return true;
+
+            if (filter === 'completed') return task.completed;
+
+            if (filter === 'progressing') return !task.completed;
+
+            return task.category === filter;
+        });
+
+    const handleComplete = (id: number) => {
+        setTasks((prevTasks) => prevTasks.map((task) => (task.id === id ? { ...task, completed: !task.completed } : task)));
+    };
+
+    const handleDelete = (id: number) => {
+        setTasks((prevTasks) => prevTasks.filter((task) => task.id !== id));
+    };
 
     return (
         <div className="bg-(--pine) m-auto my-15 p-3.75 flex justify-center flex-col w-200 border-2 rounded-md border-(--dark-green)">
@@ -31,7 +44,7 @@ export default function App() {
             <hr className="h-px border-0 bg-(--dark-green)"></hr>
             <FilterTasks filter={filter} onFilterChange={setFilter} />
             <hr className="h-px border-0 bg-(--dark-green)"></hr>
-            <ToDoLists taskList={filteredTasks} />
+            <ToDoLists taskList={filteredTasks} onDelete={handleDelete} onComplete={handleComplete} />
         </div>
     );
 }
