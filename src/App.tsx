@@ -9,13 +9,14 @@ import type { Task } from './types/task';
 export default function App() {
     const [search, setSearch] = useState<string>('');
     const [filter, setFilter] = useState<string>('all');
-
+    const [loading, setLoading] = useState(true);
     const [tasks, setTasks] = useState<Task[]>([]);
 
     useEffect(() => {
         const loadTasks = async () => {
             const allTasks = await db.tasks.toArray();
             setTasks(allTasks);
+            setLoading(false);
         };
 
         loadTasks();
@@ -58,8 +59,18 @@ export default function App() {
             <SearchTasks search={search} onSearch={setSearch} />
             <hr className="h-px border-0 bg-(--dark-green)"></hr>
             <FilterTasks filter={filter} onFilterChange={setFilter} />
-            <hr className="h-px border-0 bg-(--dark-green)"></hr>
-            <ToDoLists taskList={filteredTasks} onDelete={handleDelete} onComplete={handleComplete} />
+            {loading && (
+                <>
+                    <hr className="h-px border-0 bg-(--dark-green)" />
+                    <div className="inline-block m-auto mt-4 h-8 w-8 animate-spin rounded-full border-4 border-solid border-(--bangladesh-green) border-e-transparent" role="status"></div>
+                </>
+            )}
+            {!loading && tasks.length !== 0 && (
+                <>
+                    <hr className="h-px border-0 bg-(--dark-green)" />
+                    <ToDoLists taskList={filteredTasks} onDelete={handleDelete} onComplete={handleComplete} />
+                </>
+            )}
         </div>
     );
 }
