@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import CreateToDo from './components/CreateToDo';
 import FilterTasks from './components/FilterTasks';
 import SearchTasks from './components/SearchTasks';
 import { ToDoLists } from './components/ToDoLists';
+import { db } from './db/db';
 import type { Task } from './types/task';
 
 export default function App() {
@@ -11,8 +12,18 @@ export default function App() {
 
     const [tasks, setTasks] = useState<Task[]>([]);
 
-    const handleCreateTask = (newTask: Task) => {
-        setTasks((prevTasks) => [newTask, ...prevTasks]);
+    useEffect(() => {
+        const loadTasks = async () => {
+            const allTasks = await db.tasks.toArray();
+            setTasks(allTasks);
+        };
+
+        loadTasks();
+    }, []);
+
+    const handleCreateTask = async (task: Omit<Task, 'id'>) => {
+        const id = await db.tasks.add(task);
+        setTasks((prevTasks) => [...prevTasks, { ...task, id }]);
     };
 
     const filteredTasks = tasks
@@ -27,11 +38,15 @@ export default function App() {
             return task.category === filter;
         });
 
-    const handleComplete = (id: number) => {
+    const handleComplete = async (id: number) => {
+        const task = tasks.find((t) => t.id === id);
+        if (!task) return;
+        await db.tasks.update(id, { completed: !task.completed });
         setTasks((prevTasks) => prevTasks.map((task) => (task.id === id ? { ...task, completed: !task.completed } : task)));
     };
 
-    const handleDelete = (id: number) => {
+    const handleDelete = async (id: number) => {
+        await db.tasks.delete(id);
         setTasks((prevTasks) => prevTasks.filter((task) => task.id !== id));
     };
 
