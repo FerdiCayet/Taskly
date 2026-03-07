@@ -1,7 +1,7 @@
 export type Category = "study" | "person" | "job" | "completed" | "progressing";
 
 export type Task = {
-    id: number;
+    id?: number;
     title: string;
     category: Category;
     completed: boolean;
