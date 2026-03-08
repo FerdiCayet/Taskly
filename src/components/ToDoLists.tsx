@@ -19,7 +19,7 @@ export function ToDoLists({ taskList, onComplete, onDelete }: ToDoListProps) {
                             <button
                                 className="h-10 bg-(--frog) hover:bg-(--mountain-meadow) transition text-[#063d38] font-bold bonderad rounded-md p-2 cursor-pointer disabled:cursor-no-drop disabled:opacity-75"
                                 type="button"
-                                onClick={() => onComplete(task.id)}
+                                onClick={() => onComplete(task.id!)}
                             >
                                 {task.completed ? 'Reabrir' : 'Concluir'}
                             </button>
@@ -27,7 +27,7 @@ export function ToDoLists({ taskList, onComplete, onDelete }: ToDoListProps) {
                             <button
                                 className="h-10 bg-[#822236] hover:bg-[#5b1724] transition text-(--rich-black) font-bold bonderad rounded-md p-2 cursor-pointer disabled:cursor-no-drop disabled:opacity-75"
                                 type="button"
-                                onClick={() => onDelete(task.id)}
+                                onClick={() => onDelete(task.id!)}
                             >
                                 X
                             </button>

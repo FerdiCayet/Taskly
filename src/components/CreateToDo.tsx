@@ -43,7 +43,7 @@ export default function CreateToDo({ onCreate }: CreateToDoProps) {
                         if (!currentCategory) return;
 
                         console.log('Tarefa criada:', { title, currentCategory });
-                        onCreate({ id: Date.now(), title, category: currentCategory, completed: false });
+                        onCreate({ title, category: currentCategory, completed: false });
 
                         setTitle('');
                         setCurrentCategory('');
