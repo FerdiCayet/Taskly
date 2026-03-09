@@ -52,7 +52,7 @@ export default function App() {
     };
 
     return (
-        <div className="bg-(--pine) m-auto my-15 p-3.75 flex justify-center flex-col w-200 border-2 rounded-md border-(--dark-green)">
+        <div className="bg-(--pine) m-auto my-15 p-3.75 flex justify-center flex-col border-2 rounded-md border-(--dark-green) sm:w-150 md:w-185 lg:w-200">
             <h1 className="text-3xl font-bold text-center subpixel-antialiased font-stretch-extra-expanded cursor-default">Lista de Tarefas</h1>
             <CreateToDo onCreate={handleCreateTask} />
             <hr className="h-px border-0 bg-(--dark-green)"></hr>
